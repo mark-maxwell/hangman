@@ -1,10 +1,10 @@
  
-Given(/^a valid guess$/) do
-  pending
+Given(/^a word to guess$/) do
+  generate_word("animal")
 end
 
-When(/^a user makes a guess$/) do
-  pending
+When(/^a user makes a valid guess$/) do
+  check_guess("a")
 end
 
 Then(/^user is told guess is correct$/) do
@@ -15,8 +15,8 @@ Then(/^word is updated to include new guess$/) do
   pending
 end
 
-Given(/^an invalid guess$/) do
-  pending
+When(/^a user makes an invalid guess$/) do
+  check_guess("q")
 end
 
 Then(/^user is told guess is incorrect$/) do
