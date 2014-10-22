@@ -13,7 +13,7 @@ Then(/^user is told guess is correct$/) do
 end
 
 Then(/^word is updated to include new guess$/) do
-  pending
+  expect( self.hangman_game.check_progress ).to include( "a" )
 end
 
 When(/^a user makes an invalid guess$/) do
