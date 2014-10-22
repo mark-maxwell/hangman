@@ -1,10 +1,9 @@
- 
 Given(/^a word to guess$/) do
-  GameEngine.new("animal")
+  hangman = GameEngine.new(display, "animal")
 end
 
 When(/^a user makes a valid guess$/) do
-  check_guess("a")
+  hangman.check_guess("a")
 end
 
 Then(/^user is told guess is correct$/) do

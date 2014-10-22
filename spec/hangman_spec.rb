@@ -2,15 +2,20 @@ require 'hangman'
 
 describe "user makes a guess" do
   
+  let(:display) { double("Display") }
+  let(:hangman) { GameEngine.new(display, "animal") }
+
   it "can accept a valid guess" do
-    display = double("Display")
     guess = "a"
 
     expect(display).to receive(:valid_guess).with(guess)
-    # create a double for display
-    # Check that display.valid_guess recieves a message containing the guess
+    hangman.check_guess(guess)
+  end
 
-    hangman = GameEngine.new(display, "animal")
+  it "will handle an invalid guess" do
+    guess = "b"
+
+    expect(display).to receive(:invalid_guess).with(guess)
     hangman.check_guess(guess)
   end
 
