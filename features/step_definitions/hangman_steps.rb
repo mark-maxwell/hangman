@@ -1,13 +1,15 @@
+require './lib/hangman'
+
 Given(/^a word to guess$/) do
-  hangman = GameEngine.new(display, "animal")
+  self.hangman
 end
 
 When(/^a user makes a valid guess$/) do
-  hangman.check_guess("a")
+  self.hangman_game.check_guess("a")
 end
 
 Then(/^user is told guess is correct$/) do
-  pending
+  expect( display.last_guess_status ).to eq("valid")
 end
 
 Then(/^word is updated to include new guess$/) do
@@ -15,7 +17,7 @@ Then(/^word is updated to include new guess$/) do
 end
 
 When(/^a user makes an invalid guess$/) do
-  check_guess("q")
+  hangman.check_guess("q")
 end
 
 Then(/^user is told guess is incorrect$/) do
@@ -45,3 +47,33 @@ end
 Then(/^the user is told they have ran out of lives$/) do
   pending
 end
+
+module TestDisplay
+  def display
+    @display ||= Display.new
+  end
+
+  class Display
+    attr_accessor :last_guess_status
+
+    def valid_guess
+      @last_guess_status = "valid"
+    end
+
+    def invalid_guess
+      @last_guess_status = "invalid"
+    end
+  end
+end
+
+World(TestDisplay)
+
+module Helpers
+  attr_accessor :hangman_game
+
+  def hangman
+    self.hangman_game ||= GameEngine.new(display, "animal")
+  end
+end
+
+World(Helpers)
