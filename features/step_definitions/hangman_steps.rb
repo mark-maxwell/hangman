@@ -17,11 +17,11 @@ Then(/^word is updated to include new guess$/) do
 end
 
 When(/^a user makes an invalid guess$/) do
-  hangman.check_guess("q")
+  self.hangman_game.check_guess("q")
 end
 
 Then(/^user is told guess is incorrect$/) do
-  pending
+  expect( display.last_guess_status ).to eq("invalid")
 end
 
 Then(/^a life is deducted$/) do
