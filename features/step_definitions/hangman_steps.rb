@@ -1,6 +1,6 @@
  
 Given(/^a word to guess$/) do
-  generate_word("animal")
+  GameEngine.new("animal")
 end
 
 When(/^a user makes a valid guess$/) do
