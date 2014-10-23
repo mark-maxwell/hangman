@@ -18,7 +18,7 @@ class GameEngine
   end
 
   def check_guess(guess)
-    matches = (@answer.count guess).to_i
+    matches = @answer.count(guess).to_i
     if matches > 0
       update_answer(guess)
       @display.valid_guess
@@ -29,24 +29,20 @@ class GameEngine
 
   def check_progress
     result = ""
-    @shown_word.each {|index| 
-      if index.state
-        result += index.letter
-      end
+    @shown_word.each {|index|
+      result += index.letter if index.state
     }
     result
   end
   
   def number_of_characters_left_to_guess
     current_guesses = check_progress
-    return @answer.length - current_guesses.length
+    @answer.length - current_guesses.length
   end
 
   def update_answer(guess)
     @shown_word.each {|index|
-      if guess == index.letter
-        index.state = true
-      end
+      index.state = true if guess == index.letter
     }
   end
 

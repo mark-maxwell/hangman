@@ -13,7 +13,7 @@ Then(/^user is told guess is correct$/) do
 end
 
 Then(/^word is updated to include new guess$/) do
-  expect( self.hangman_game.check_progress ).to include( "a" )
+  expect( self.hangman_game.check_progress ).to include("a")
 end
 
 When(/^a user makes an invalid guess$/) do
@@ -32,11 +32,13 @@ When(/^there is only one letter left to guess$/) do
   self.hangman_game.check_guess("n")
   self.hangman_game.check_guess("i")
   self.hangman_game.check_guess("m")
-  expect( self.hangman_game.number_of_characters_left_to_guess ).to eq ( 1 )
+  expect( self.hangman_game.number_of_characters_left_to_guess ).to eq(1)
 end
 
 Then(/^user is told they have guessed the word$/) do
-  pending
+  self.hangman_game.check_guess("l")
+  expect( self.hangman_game.number_of_characters_left_to_guess ).to eq(0)
+  expect( display.game_status ).to eq("Well done! Word discovered!")
 end
 
 Then(/^the game is over$/) do
@@ -57,7 +59,7 @@ module TestDisplay
   end
 
   class Display
-    attr_accessor :last_guess_status
+    attr_accessor :last_guess_status, :game_status
 
     def valid_guess
       @last_guess_status = "valid"
@@ -66,6 +68,11 @@ module TestDisplay
     def invalid_guess
       @last_guess_status = "invalid"
     end
+
+    def game_won
+      @game_status = "Well done! Word discovered!"
+    end 
+    
   end
 end
 
