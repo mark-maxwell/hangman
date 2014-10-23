@@ -22,6 +22,7 @@ class GameEngine
     if matches > 0
       update_answer(guess)
       @display.valid_guess
+      word_complete if number_of_characters_left_to_guess == 0
     else
       @display.invalid_guess
     end
@@ -44,6 +45,10 @@ class GameEngine
     @shown_word.each {|index|
       index.state = true if guess == index.letter
     }
+  end
+
+  def word_complete
+    @display.game_won
   end
 
 end
