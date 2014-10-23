@@ -13,7 +13,7 @@ Then(/^user is told guess is correct$/) do
 end
 
 Then(/^word is updated to include new guess$/) do
-  pending
+  expect( self.hangman_game.check_progress ).to include( "a" )
 end
 
 When(/^a user makes an invalid guess$/) do
@@ -29,7 +29,10 @@ Then(/^a life is deducted$/) do
 end
 
 When(/^there is only one letter left to guess$/) do
-  pending
+  self.hangman_game.check_guess("n")
+  self.hangman_game.check_guess("i")
+  self.hangman_game.check_guess("m")
+  expect( self.hangman_game.number_of_characters_left_to_guess ).to eq ( 1 )
 end
 
 Then(/^user is told they have guessed the word$/) do
