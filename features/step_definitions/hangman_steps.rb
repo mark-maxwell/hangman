@@ -25,7 +25,7 @@ Then(/^user is told guess is incorrect$/) do
 end
 
 Then(/^a life is deducted$/) do
-  pending
+  expect( self.hangman_game.check_lives ).to eq(8)
 end
 
 When(/^there is only one letter left to guess$/) do

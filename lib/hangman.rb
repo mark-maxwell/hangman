@@ -1,9 +1,10 @@
 require 'letter'
-
+require 'player'
 class GameEngine
   attr_accessor :answer, :shown_word, :character_count
 
   def initialize(display, word)
+    @player = Player.new
     @answer = word
     @display = display
     @shown_word = []
@@ -25,6 +26,11 @@ class GameEngine
       word_complete if number_of_characters_left_to_guess == 0
     else
       @display.invalid_guess
+      if is_game_over? 
+        @display.game_lost
+      else
+        @player.deduct_life
+      end
     end
   end
 
@@ -49,6 +55,14 @@ class GameEngine
 
   def word_complete
     @display.game_won
+  end
+
+  def is_game_over?
+    if @player.lives == 1
+      true
+    else
+      false
+    end
   end
 
 end
