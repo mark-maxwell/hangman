@@ -38,7 +38,7 @@ end
 Then(/^user is told they have guessed the word$/) do
   self.hangman_game.check_guess("l")
   expect( self.hangman_game.number_of_characters_left_to_guess ).to eq(0)
-  expect( display.game_complete ).to eq(true)
+  expect( display.game_won ).to eq(true)
   self.new_hangman
 end
 
