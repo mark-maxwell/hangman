@@ -22,16 +22,24 @@ class GameEngine
   def check_guess(guess)
     matches = @answer.count(guess).to_i
     if matches > 0
-      update_answer(guess)
-      @display.valid_guess
-      word_complete if number_of_characters_left_to_guess == 0
+      process_valid_guess(guess)
     else
-      @display.invalid_guess
+      process_invalid_guess(guess)
+    end
+  end
+
+  def process_valid_guess(guess)
+    update_answer(guess)
+    @display.valid_guess
+    word_complete if number_of_characters_left_to_guess == 0
+  end
+
+  def process_invalid_guess(guess)
+    @display.invalid_guess
       if is_game_over?
         @display.game_lost
       end
       @player.deduct_life
-    end
   end
 
   def check_progress
