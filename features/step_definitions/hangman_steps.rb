@@ -38,11 +38,8 @@ end
 Then(/^user is told they have guessed the word$/) do
   self.hangman_game.check_guess("l")
   expect( self.hangman_game.number_of_characters_left_to_guess ).to eq(0)
-  expect( display.game_status ).to eq("Well done! Word discovered!")
-end
-
-Then(/^the game is over$/) do
-  pending
+  expect( display.game_complete ).to eq(true)
+  self.new_hangman
 end
 
 When(/^user only has one life left$/) do
@@ -70,7 +67,7 @@ module TestDisplay
     end
 
     def game_won
-      @game_status = "Well done! Word discovered!"
+      @game_complete = true
     end 
     
   end
@@ -83,6 +80,9 @@ module Helpers
 
   def hangman
     self.hangman_game ||= GameEngine.new(display, "animal")
+  end
+  def new_hangman
+    self.hangman_game = GameEngine.new(display, "animal")
   end
 end
 

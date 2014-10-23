@@ -14,7 +14,7 @@ describe "user makes a guess" do
 
   it "will handle an invalid guess" do
     guess = "b"
-
+    
     expect(display).to receive(:invalid_guess)
     hangman.check_guess(guess)
   end

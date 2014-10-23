@@ -17,11 +17,9 @@ Feature: Basic hangman game
     When a user makes a valid guess
       And there is only one letter left to guess
     Then user is told they have guessed the word
-      And the game is over
 
   Scenario: User runs out of lives
     Given a word to guess
     When a user makes an invalid guess
       And user only has one life left
     Then the user is told they have ran out of lives
-      And the game is over
