@@ -21,9 +21,10 @@ describe "user makes a guess" do
 
 describe "lives can be checked and deducted" do
   it "can remove a life" do
-    current_lives = hangman.check_lives
+    expect(display).to receive(:invalid_guess)
+    current_lives = hangman.player.lives
     hangman.check_guess("r")
-    expect(current_lives - 1 ).to eq(hangman.check_lives)
+    expect(current_lives - 1 ).to eq(hangman.player.lives)
   end
 end
 

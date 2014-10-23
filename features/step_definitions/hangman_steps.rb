@@ -25,7 +25,7 @@ Then(/^user is told guess is incorrect$/) do
 end
 
 Then(/^a life is deducted$/) do
-  expect( self.hangman_game.check_lives ).to eq(8)
+  expect( self.hangman_game.player.lives).to eq(8)
 end
 
 When(/^there is only one letter left to guess$/) do
@@ -42,12 +42,29 @@ Then(/^user is told they have guessed the word$/) do
   self.new_hangman
 end
 
+When(/^a user makes 8 invalid guesses$/) do
+  self.hangman_game.check_guess("x")
+  self.hangman_game.check_guess("y")
+  self.hangman_game.check_guess("z")
+  self.hangman_game.check_guess("b")
+  self.hangman_game.check_guess("c")
+  self.hangman_game.check_guess("d")
+  self.hangman_game.check_guess("e")
+  self.hangman_game.check_guess("f")
+end
+
 When(/^user only has one life left$/) do
-  pending
+  expect( self.hangman_game.player.lives).to eq(1)
+end
+
+When(/^then makes a further invalid guess$/) do
+  self.hangman_game.check_guess("q")
 end
 
 Then(/^the user is told they have ran out of lives$/) do
-  pending
+  expect( self.hangman_game.player.lives ).to eq(0)
+  expect( display.game_won ).to eq(true)
+  self.new_hangman
 end
 
 module TestDisplay
@@ -56,7 +73,7 @@ module TestDisplay
   end
 
   class Display
-    attr_accessor :last_guess_status, :game_status
+    attr_accessor :last_guess_status, :game_complete
 
     def valid_guess
       @last_guess_status = "valid"
@@ -68,7 +85,11 @@ module TestDisplay
 
     def game_won
       @game_complete = true
-    end 
+    end
+
+    def game_lost
+      @game_complete = true
+    end
     
   end
 end

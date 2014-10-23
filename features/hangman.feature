@@ -20,6 +20,7 @@ Feature: Basic hangman game
 
   Scenario: User runs out of lives
     Given a word to guess
-    When a user makes an invalid guess
+    When a user makes 8 invalid guesses
       And user only has one life left
+      And then makes a further invalid guess
     Then the user is told they have ran out of lives
