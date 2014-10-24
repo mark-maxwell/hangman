@@ -1,8 +1,9 @@
-require 'letter'
-require 'player'
+require_relative 'letter'
+require_relative 'player'
+require_relative 'display'
 
 class GameEngine
-  attr_accessor :answer, :shown_word, :character_count, :player
+  attr_accessor :answer, :shown_word, :character_count, :player, :display
 
   def initialize(display, word)
     @player = Player.new
