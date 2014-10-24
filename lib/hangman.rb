@@ -52,6 +52,18 @@ class GameEngine
     }
     result
   end
+
+  def display_progress
+    result = ""
+    @shown_word.each {|index|
+      if index.state
+        result += " " + index.letter
+      else
+        result += " _"
+      end
+    }
+    result
+  end
   
   def number_of_characters_left_to_guess
     current_guesses = check_progress
