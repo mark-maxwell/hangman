@@ -58,7 +58,7 @@ class GameEngine
   end
 
   def add_to_trash(guess)
-    @trash << guess
+    @trash << guess unless @trash.include?(guess)
   end
 
   def get_trashed_letters

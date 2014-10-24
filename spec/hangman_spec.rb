@@ -32,12 +32,19 @@ describe "user makes a guess" do
     expect(hangman.get_trashed_letters).to eq(["q", "w"])
   end
 
-describe "lives can be checked and deducted" do
-  it "can remove a life" do
+  it "will not add duplicates to trash" do
+    expect(display).to receive(:invalid_guess).twice
+    hangman.check_guess("q")
+    hangman.check_guess("q")
+    expect(hangman.get_trashed_letters).to eq(["q"])
+  end
+
+  describe "lives can be checked and deducted" do
+    it "can remove a life" do
     expect(display).to receive(:invalid_guess)
     current_lives = hangman.player.lives
     hangman.check_guess("r")
     expect(current_lives - 1).to eq(hangman.player.lives )
+    end
   end
-end
 end
