@@ -10,6 +10,7 @@ class GameEngine
     @display = display
     @shown_word = []
     create_shown_word
+    @trash = []
   end
 
   def create_shown_word
@@ -36,6 +37,7 @@ class GameEngine
 
   def process_invalid_guess(guess)
     @display.invalid_guess
+    add_to_trash(guess)
       if is_game_over?
         @display.game_lost
       end
@@ -53,6 +55,14 @@ class GameEngine
   def number_of_characters_left_to_guess
     current_guesses = check_progress
     @answer.length - current_guesses.length
+  end
+
+  def add_to_trash(guess)
+    @trash << guess
+  end
+
+  def get_trashed_letters
+    @trash
   end
 
   def update_answer(guess)
