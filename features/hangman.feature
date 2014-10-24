@@ -11,6 +11,7 @@ Feature: Basic hangman game
     When a user makes an invalid guess
     Then user is told guess is incorrect
       And a life is deducted
+      And incorrect letter is added to trash
 
   Scenario: User guesses last letter correctly
     Given a word to guess

@@ -24,6 +24,10 @@ Then(/^user is told guess is incorrect$/) do
   expect( display.last_guess_status ).to eq("invalid")
 end
 
+Then(/^incorrect letter is added to trash$/) do
+  expect( hangman_game.get_trashed_letters). to eq(["q"])
+end
+
 Then(/^a life is deducted$/) do
   expect( self.hangman_game.player.lives).to eq(8)
 end
