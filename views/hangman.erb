@@ -1,21 +1,28 @@
-  <div class="display_container">
+<style type="text/css">
+  .hidden { display: none; }
+</style>
+
+<div class="display_container">
+  <span>
+    <%= progress %>
+  </span> 
+  <span>
+    Lives: <%= lives %>
+  </span> 
+</div>
+<form>
+  <div class="submit_container">
     <span>
-      <%= progress %>
-    </span> 
+      Enter:
+    </span>
     <span>
-      Lives: <%= lives %>
+      <input type="text" name="guess" <%= game_over_input %> />
+    </span>
+    <span>
+      <input type="submit" value="submit" <%= game_over_input %> />
     </span> 
   </div>
-  <form>
-    <div class="submit_container">
-      <span>
-        Enter:
-      </span>
-      <span>
-        <input type="text" name="guess" />
-      </span>
-      <span>
-        <input type="submit" value="submit" />
-      </span> 
-    </div>
-  </form>
+  <div class="<%= game_over %>">
+    <%= game_over_message %>
+  </div>
+</form>
