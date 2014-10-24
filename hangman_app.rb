@@ -10,34 +10,30 @@ end
 hangman_game = GameEngine.new(Display.new, "animal")
 
 get '/' do
-  if params[:guess]
-    hangman_game.check_guess(params[:guess])
-  end
-
-  game_over = "hidden"
-
-  if hangman_game.display.game_complete
-    game_over_input = "disabled"
-    game_over = "game-over"
-    game_over_message = ""
-    if hangman_game.display.last_guess_status == "valid"
-      game_over_message = "Well done!"
-    else
-      game_over_message = "You lose!"
-    end
-  end
 
   erb :hangman, :locals => { 
     :lives => hangman_game.player.lives, 
-    :progress => hangman_game.display_progress,
-    :game_over => game_over,
-    :game_over_input => game_over_input,
-    :game_over_message => game_over_message
+    :progress => hangman_game.display_progress
   }
 
-  # if !hangman_game.display.game_complete
-  #   erb :hangmaninput
-  # else
-  #   'You loose'
-  # end
+end
+
+get '/submit_guess/' do
+
+  hangman_game.check_guess(params[:guess])
+
+  if hangman_game.display.game_complete
+    status, headers, body = call env.merge("PATH_INFO" => '/game_over/' + hangman_game.display.last_guess_status)
+  else
+    status, headers, body = call env.merge("PATH_INFO" => '/')
+  end
+  
+end
+
+get '/game_over/invalid' do
+  'Game Over - INVALID'
+end
+
+get '/game_over/valid' do
+  'Game Over - VALID'
 end

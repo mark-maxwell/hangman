@@ -10,19 +10,16 @@
     Lives: <%= lives %>
   </span> 
 </div>
-<form>
+<form action="/submit_guess/" method="get">
   <div class="submit_container">
     <span>
       Enter:
     </span>
     <span>
-      <input type="text" name="guess" <%= game_over_input %> />
+      <input type="text" name="guess" />
     </span>
     <span>
-      <input type="submit" value="submit" <%= game_over_input %> />
+      <input type="submit" value="submit" />
     </span> 
-  </div>
-  <div class="<%= game_over %>">
-    <%= game_over_message %>
   </div>
 </form>
