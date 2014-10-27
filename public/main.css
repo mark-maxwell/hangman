@@ -1,12 +1,153 @@
+@font-face {
+    font-family: chalk;
+    src: url(TallyMark.otf);
+}
+
+@font-face {
+  font-family: western;
+  src: url(CMOldWestern.ttf);
+}
+
 body {
-  background: #030303;
+  background: #fff 0 0/100% 100% no-repeat url(background.jpg);
   margin: 0;
   padding: 0;
 }
 
 .container {
-  width: 100%;
+  border: 2px solid;
+  border-radius: 25px;
+  box-shadow: 10px 10px 5px black;
+  width: 92%;
   max-width: 900px;
-  margin: 0 auto;
-  background: #ffffff;
+  margin: 20px auto;
+  background: rgba(255,255,255,0.5);
+
+  padding: 20px 4%;
+}
+
+h1.the_title {
+  padding: 0px;
+  margin-top: 0px;
+  margin-bottom: 18px;
+  font-size: 80px;
+  font-family: western;
+  text-align: center;
+}
+
+.game_container {
+  width: 60%;
+  float: left;
+}
+
+/* Multi-line Comment
+    This is a multi line comment */
+
+  .word {
+    font-size: 100px;
+    text-align: center;
+    padding-bottom: 30px;
+  }
+
+.guess_container {
+  text-align: center;
+}
+
+/* Will affect all inputs with an attribute of type that is equal to "text".
+  input[type="text"] {
+
+*/
+  .input-guess {
+    margin: 10px;
+    padding: 10px;
+    font-size: 20px;
+    width: 100%;
+    border: 1px solid #000;
+    text-align: center;
+  }
+
+  .enter {
+    border-top: 1px solid #8f8f8f;
+    background: #4a4a4a;
+    background: -webkit-gradient(linear, left top, left bottom, from(#303030), to(#4a4a4a));
+    background: -webkit-linear-gradient(top, #303030, #4a4a4a);
+    background: -moz-linear-gradient(top, #303030, #4a4a4a);
+    background: -ms-linear-gradient(top, #303030, #4a4a4a);
+    background: -o-linear-gradient(top, #303030, #4a4a4a);
+    padding: 10px 20px;
+    -webkit-border-radius: 14px;
+    -moz-border-radius: 14px;
+    border-radius: 14px;
+    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+    box-shadow: rgba(0,0,0,1) 0 1px 0;
+    text-shadow: rgba(0,0,0,.4) 0 1px 0;
+    color: white;
+    font-size: 21px;
+    font-family: 'Lucida Grande', Helvetica, Arial, Sans-Serif;
+    text-decoration: none;
+    vertical-align: middle;
+  }
+
+  .enter:hover {
+    border-top-color: #4a4a4a;
+    background: #4a4a4a;
+    color: #ccc;
+  }
+
+  .enter:active {
+    border-top-color: #000000;
+    background: #000000;
+  }
+
+.lives_container {
+  width: 40%;
+  float: left;
+}
+
+  .lives:before {
+    font-family: chalk;
+    font-size: 50px;
+    display: block;
+    text-align: center;
+  }
+
+    .lives.current-9:before {
+      content: "ed";
+    }
+
+    .lives.current-8:before {
+      content: "ec";
+    }
+
+    .lives.current-7:before {
+      content: "eb";
+    }
+
+    .lives.current-6:before {
+      content: "ea";
+    }
+
+    .lives.current-5:before {
+      content: "e";
+    }
+
+    .lives.current-4:before {
+      content: "d";
+    }
+
+    .lives.current-3:before {
+      content: "c";
+    }
+
+    .lives.current-2:before {
+      content: "b";
+    }
+
+    .lives.current-1:before {
+      content: "a";
+    }
+
+.clearfix {
+  clear: both;  /* :( */
 }

@@ -1,21 +1,27 @@
-<div class="display_container">
-  <span>
+<h1 class="the_title">High Noon Hangman</h1>
+<div class="game_container">
+  <div class="word">
     <%= progress %>
-  </span> 
-  <span>
-    Lives: <%= lives %>
-  </span> 
-</div>
-<form action="/submit_guess/" method="get">
-  <div class="submit_container">
-    <span>
-      Enter:
-    </span>
-    <span>
-      <input type="text" name="guess" />
-    </span>
-    <span>
-      <input type="submit" value="submit" />
-    </span> 
   </div>
-</form>
+  <div class="guess_container">
+    <form action="/submit_guess/" method="get">
+      <div class="submit_container">
+        <div>
+          <input class="input-guess" type="text" name="guess" autocomplete="off" placeholder="Enter Guess..." />
+        </div>
+        <div>
+          <input class="enter" type="submit" value="Make a Guess!" />
+        </div> 
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="lives_container">
+  <div class="hangman">
+    <!-- Hangman image here -->
+  </div>
+  <span class="lives current-<%= lives %>"></span>
+</div>
+
+<div class="clearfix"></div>
