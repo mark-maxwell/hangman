@@ -49,6 +49,13 @@ h1.the_title {
     padding-bottom: 30px;
   }
 
+  .entry_based_message {
+    font-size: 24px;
+    font-family: Courier;
+    color: #BC1616; /*Dark red*/
+    text-align: center;
+  }
+
 .guess_container {
   text-align: center;
 }

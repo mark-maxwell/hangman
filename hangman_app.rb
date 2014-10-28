@@ -1,5 +1,6 @@
 require 'sinatra'
 require './lib/hangman'
+require './lib/word_generator'
 require 'rack'
 
 configure :development do
@@ -7,34 +8,41 @@ configure :development do
   use Rack::Reloader
 end
 
-hangman_game = GameEngine.new(Display.new)
+enable :sessions
 
 get '/' do
 
   erb :hangman, :locals => { 
-    :lives => hangman_game.player.lives, 
-    :progress => hangman_game.display_progress,
-    :trash => hangman_game.display_trash
+    :lives => session[:hangman_game].player.lives, 
+    :progress => session[:hangman_game].display_progress,
+    :trash => session[:hangman_game].display_trash,
+    :error_message => session[:hangman_game].error_message
   }
 
 end
 
 get '/submit_guess/' do
 
-  hangman_game.check_guess(params[:guess])
+  session[:hangman_game].validate_guess(params[:guess])
 
-  if hangman_game.display.game_complete
-    status, headers, body = call env.merge("PATH_INFO" => '/game_over/' + hangman_game.display.last_guess_status)
+  if session[:hangman_game].display.game_complete
+    status, headers, body = call env.merge("PATH_INFO" => '/game_over/' + session[:hangman_game].display.last_guess_status)
   else
     status, headers, body = call env.merge("PATH_INFO" => '/')
   end
+
   
 end
 
 get '/game_over/invalid' do
-  'Game Over - INVALID answer ' + hangman_game.answer
+  'Game Over - INVALID answer ' + session[:hangman_game].answer
 end
 
 get '/game_over/valid' do
   'Game Over - VALID'
+end
+
+get '/reset/' do
+  session[:new_word] = WordGenerator.new.generate_random_word
+  session[:hangman_game] = GameEngine.new(Display.new, session[:new_word])
 end

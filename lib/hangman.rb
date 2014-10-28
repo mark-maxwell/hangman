@@ -1,33 +1,33 @@
 require_relative 'letter'
 require_relative 'player'
 require_relative 'display'
+require_relative 'validate'
 
 require 'random-word'
 
 class GameEngine
-  attr_accessor :answer, :shown_word, :character_count, :player, :display, :trash
+  attr_accessor :answer, :shown_word, :character_count, :player, :display, :trash, :error_message
 
-  def initialize(display, *word)
+  def initialize(display, word)
 
-    puts word.count
-
-    if word.count == 1
-      @answer = word[0].to_s
-    else
-      @answer = generate_random_word
-    end
-
+    @answer = word
     @player = Player.new
     @display = display
     @shown_word = []
     create_shown_word
     @trash = []
+    @valid = Valid.new
+    @error_message = "Howdy Partner, why not give us ya first guess!"
   end
 
-  def generate_random_word
-    ::RandomWord.exclude_list << /_+/
-    ::RandomWord.exclude_list << /[a-zA-Z]{8,}/
-    ::RandomWord.adjs.next
+  def validate_guess(guess)
+    is_guess_valid = @valid.guess(guess, @trash)
+    if is_guess_valid[0]
+      check_guess(guess)
+      @error_message = ""
+    else
+      @error_message = is_guess_valid[1]
+    end
   end
 
   def create_shown_word
