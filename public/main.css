@@ -103,7 +103,11 @@ h1.the_title {
 .lives_container {
   width: 40%;
   float: left;
+  padding-top: 220px
 }
+  .trash {
+    font-size: 26px
+  }
 
   .lives:before {
     font-family: chalk;
