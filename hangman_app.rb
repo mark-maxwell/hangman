@@ -55,3 +55,13 @@ get '/reset/' do
   session[:hangman_game] = GameEngine.new(Display.new, session[:new_word])
   status, headers, body = call env.merge("PATH_INFO" => '/')
 end
+
+get '/set_custom_word' do
+  erb :custom_word
+end
+
+get '/custom_word/' do
+  session[:new_word] = params[:custom_word]
+  session[:hangman_game] = GameEngine.new(Display.new, session[:new_word])
+  status, headers, body = call env.merge("PATH_INFO" => '/')
+end
