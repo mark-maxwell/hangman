@@ -2,16 +2,32 @@ require_relative 'letter'
 require_relative 'player'
 require_relative 'display'
 
-class GameEngine
-  attr_accessor :answer, :shown_word, :character_count, :player, :display
+require 'random-word'
 
-  def initialize(display, word)
+class GameEngine
+  attr_accessor :answer, :shown_word, :character_count, :player, :display, :trash
+
+  def initialize(display, *word)
+
+    puts word.count
+
+    if word.count == 1
+      @answer = word[0].to_s
+    else
+      @answer = generate_random_word
+    end
+
     @player = Player.new
-    @answer = word
     @display = display
     @shown_word = []
     create_shown_word
     @trash = []
+  end
+
+  def generate_random_word
+    ::RandomWord.exclude_list << /_+/
+    ::RandomWord.exclude_list << /[a-zA-Z]{8,}/
+    ::RandomWord.adjs.next
   end
 
   def create_shown_word
@@ -63,6 +79,10 @@ class GameEngine
       end
     }
     result
+  end
+
+  def display_trash
+    @trash.join(", ")
   end
   
   def number_of_characters_left_to_guess

@@ -7,13 +7,14 @@ configure :development do
   use Rack::Reloader
 end
 
-hangman_game = GameEngine.new(Display.new, "animal")
+hangman_game = GameEngine.new(Display.new)
 
 get '/' do
 
   erb :hangman, :locals => { 
     :lives => hangman_game.player.lives, 
-    :progress => hangman_game.display_progress
+    :progress => hangman_game.display_progress,
+    :trash => hangman_game.display_trash
   }
 
 end
@@ -31,7 +32,7 @@ get '/submit_guess/' do
 end
 
 get '/game_over/invalid' do
-  'Game Over - INVALID'
+  'Game Over - INVALID answer ' + hangman_game.answer
 end
 
 get '/game_over/valid' do

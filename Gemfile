@@ -5,3 +5,5 @@ gem "sinatra"
 gem "capybara"
 gem "cucumber"
 gem "rspec"
+
+gem 'random-word', '~> 1.3.0'
