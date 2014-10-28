@@ -9,6 +9,6 @@ class WordGenerator
         end
       }
     c = rand*line.length.to_i
-    line[c-1]
+    line[c-1].strip
   end
 end

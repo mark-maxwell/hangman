@@ -11,13 +11,17 @@ end
 enable :sessions
 
 get '/' do
-
-  erb :hangman, :locals => { 
-    :lives => session[:hangman_game].player.lives, 
-    :progress => session[:hangman_game].display_progress,
-    :trash => session[:hangman_game].display_trash,
-    :error_message => session[:hangman_game].error_message
-  }
+    
+    if session[:new_word] == nil
+      status, headers, body = call env.merge("PATH_INFO" => '/reset/')
+    end
+    
+    erb :hangman, :locals => {
+      :lives => session[:hangman_game].player.lives, 
+      :progress => session[:hangman_game].display_progress,
+      :trash => session[:hangman_game].display_trash,
+      :error_message => session[:hangman_game].error_message
+    }
 
 end
 
@@ -35,14 +39,19 @@ get '/submit_guess/' do
 end
 
 get '/game_over/invalid' do
-  'Game Over - INVALID answer ' + session[:hangman_game].answer
+    erb :invalid, :locals => {
+      :answer => session[:new_word]
+    }
 end
 
 get '/game_over/valid' do
-  'Game Over - VALID'
+  erb :valid, :locals => {
+      :answer => session[:new_word]
+    }
 end
 
 get '/reset/' do
   session[:new_word] = WordGenerator.new.generate_random_word
   session[:hangman_game] = GameEngine.new(Display.new, session[:new_word])
+  status, headers, body = call env.merge("PATH_INFO" => '/')
 end
