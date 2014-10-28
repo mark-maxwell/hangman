@@ -3,8 +3,6 @@ require_relative 'player'
 require_relative 'display'
 require_relative 'validate'
 
-require 'random-word'
-
 class GameEngine
   attr_accessor :answer, :shown_word, :character_count, :player, :display, :trash, :error_message
 
