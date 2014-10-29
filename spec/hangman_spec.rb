@@ -18,7 +18,7 @@ describe "user makes a guess" do
 
   it "can deduct a life for invalid whole word guess" do
     expect(display).to receive(:invalid_guess)
-    hangman.check_guess("inco")
+    hangman.check_guess("qico")
   end
 
   it "will handle an invalid guess" do

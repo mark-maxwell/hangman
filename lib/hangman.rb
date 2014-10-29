@@ -38,7 +38,7 @@ class GameEngine
 
   def check_guess(guess)
     matches = @answer.count(guess).to_i
-    if matches > 0
+    if matches > 0 && guess.length == 1 || guess == @answer
       process_valid_guess(guess)
     else
       process_invalid_guess(guess)
