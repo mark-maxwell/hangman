@@ -6,8 +6,8 @@ class Valid
       return [false, "Too slow on the draw partner."]
     elsif correct_guesses.include?(guess.downcase)
       return [false, "C'mon now!!! You just tried that... LOOK UP!!!"]
-    elsif guess == "" || guess =~ /[\s]/
-      return [false, "Maybe try entering something!?!?!?"]
+    elsif guess == "" || guess =~ /^.*\s+.*$/
+      return [false, "Ain't no spaces cowboy!!!"]
     else
       return [true, ""]
     end
