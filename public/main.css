@@ -112,51 +112,77 @@ h1.the_title {
   float: left;
   padding-top: 220px
 }
-  .trash {
-    font-size: 26px
+  .lives.current-9:before {
+    content: "ed";
   }
 
-  .lives:before {
-    font-family: chalk;
-    font-size: 50px;
-    display: block;
-    text-align: center;
+  .lives.current-8:before {
+    content: "ec";
   }
 
-    .lives.current-9:before {
-      content: "ed";
+  .lives.current-7:before {
+    content: "eb";
+  }
+
+  .lives.current-6:before {
+    content: "ea";
+  }
+
+  .lives.current-5:before {
+    content: "e";
+  }
+
+  .lives.current-4:before {
+    content: "d";
+  }
+
+  .lives.current-3:before {
+    content: "c";
+  }
+
+  .lives.current-2:before {
+    content: "b";
+  }
+
+  .lives.current-1:before {
+    content: "a";
+  }
+
+  .trash_container {
+    border-width: 0px 12px 0px 12px;
+    border-style: double;
+    border-color: black;
+    border-radius:40px 40px 60px 60px;
+    -webkit-border-radius:40px 40px 60px 60px;
+  }
+    .trash_heading {
+      padding-left: 20px;
+      font-family: Verdana;
+      font-size: 28px
     }
 
-    .lives.current-8:before {
-      content: "ec";
+    .trash {
+      padding-left: 55px;
+      padding-bottom: 10px;
+      font-size: 26px
     }
 
-    .lives.current-7:before {
-      content: "eb";
+    .trash_whole_heading {
+      padding-left: 20px;
+      font-family: Verdana;
+      font-size: 28px
     }
 
-    .lives.current-6:before {
-      content: "ea";
+    .trash_whole_words {
+      padding-left: 55px;
+      font-size: 26px
     }
 
-    .lives.current-5:before {
-      content: "e";
-    }
-
-    .lives.current-4:before {
-      content: "d";
-    }
-
-    .lives.current-3:before {
-      content: "c";
-    }
-
-    .lives.current-2:before {
-      content: "b";
-    }
-
-    .lives.current-1:before {
-      content: "a";
+    .lives:before {
+      font-family: chalk;
+      font-size: 50px;
+      display: block;
+      text-align: center;
     }
 
 .clearfix {

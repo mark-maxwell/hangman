@@ -9,7 +9,6 @@ configure :development do
 end
 
 enable :sessions
-
 get '/' do
     
     if session[:new_word] == nil
@@ -19,7 +18,9 @@ get '/' do
     erb :hangman, :locals => {
       :lives => session[:hangman_game].player.lives, 
       :progress => session[:hangman_game].display_progress,
-      :trash => session[:hangman_game].display_trash,
+      #:trash => session[:hangman_game].display_trash,
+      :trashed_letters => session[:hangman_game].get_trashed_letters,
+      :trashed_words => session[:hangman_game].get_trashed_words,
       :error_message => session[:hangman_game].error_message
     }
 
@@ -35,7 +36,6 @@ get '/submit_guess/' do
     status, headers, body = call env.merge("PATH_INFO" => '/')
   end
 
-  
 end
 
 get '/game_over/invalid' do

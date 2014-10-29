@@ -94,7 +94,23 @@ class GameEngine
   end
 
   def get_trashed_letters
-    @trash
+    temp = []
+    @trash.each { |entry|
+      if entry.length == 1
+        temp << entry
+      end
+    }
+    temp.join(", ")
+  end
+
+  def get_trashed_words
+    temp = []
+    @trash.each { |entry|
+      if entry.length > 1
+        temp << entry
+      end
+    }
+    temp.join(", ")
   end
 
   def update_answer(guess)

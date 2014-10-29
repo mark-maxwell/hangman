@@ -23,8 +23,19 @@
     <!-- Hangman image here -->
   </div>
   <span class="lives current-<%= lives %>"></span>
-  <div class="trash">
-    <%= trash %>
+  <div class="trash_container">
+    <div class="trash_heading">
+      Guesses:
+    </div>
+    <div class="trash">
+      <%= trashed_letters %>
+    </div>
+    <div class="trash_whole_heading">
+      Whole word guesses:
+    </div>
+    <div class="trash_whole_words">
+      <%= trashed_words %>
+    </div>
   </div>
 </div>
 
