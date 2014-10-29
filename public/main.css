@@ -25,12 +25,44 @@ body {
 
   padding: 20px 4%;
 }
+  .buttons_top {
+    margin-top: 15px;
+    text-align: center
+  }
+    .restart {
+      background: #1f1f1f;
+      background-image: -webkit-linear-gradient(top, #1f1f1f, #737373);
+      background-image: -moz-linear-gradient(top, #1f1f1f, #737373);
+      background-image: -ms-linear-gradient(top, #1f1f1f, #737373);
+      background-image: -o-linear-gradient(top, #1f1f1f, #737373);
+      background-image: linear-gradient(to bottom, #1f1f1f, #737373);
+      -webkit-border-radius: 12;
+      -moz-border-radius: 12;
+      border-radius: 12px;
+      font-family: Arial;
+      color: #ffffff;
+      font-size: 20px;
+      padding: 10px 20px 10px 20px;
+      border: solid #dae0e3 1px;
+      text-decoration: none;
+    }
 
-.text:focus {
-    border: 1px solid #09c;
-    box-shadow: 0 0 7px rgba(0, 200, 204, 0.7);
-    outline: none;
-}
+    .restart:hover {
+      background: #858585;
+      background-image: -webkit-linear-gradient(top, #858585, #969696);
+      background-image: -moz-linear-gradient(top, #858585, #969696);
+      background-image: -ms-linear-gradient(top, #858585, #969696);
+      background-image: -o-linear-gradient(top, #858585, #969696);
+      background-image: linear-gradient(to bottom, #858585, #969696);
+      text-decoration: none;
+    }
+
+
+    .restart:focus {
+        border: 1px solid #09c;
+        box-shadow: 0 0 7px rgba(0, 200, 204, 0.7);
+        outline: none;
+    }
 
 h1.the_title {
   padding: 0px;
@@ -84,41 +116,41 @@ h1.the_title {
     border: 1px solid #09c;
     box-shadow: 0 0 7px rgba(255, 0, 0, 0.7);
     outline: none;
-}
+  }
 
   .enter {
-    border-top: 1px solid #8f8f8f;
-    background: #4a4a4a;
-    background: -webkit-gradient(linear, left top, left bottom, from(#303030), to(#4a4a4a));
-    background: -webkit-linear-gradient(top, #303030, #4a4a4a);
-    background: -moz-linear-gradient(top, #303030, #4a4a4a);
-    background: -ms-linear-gradient(top, #303030, #4a4a4a);
-    background: -o-linear-gradient(top, #303030, #4a4a4a);
-    padding: 10px 20px;
-    -webkit-border-radius: 14px;
-    -moz-border-radius: 14px;
-    border-radius: 14px;
-    -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-    -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-    box-shadow: rgba(0,0,0,1) 0 1px 0;
-    text-shadow: rgba(0,0,0,.4) 0 1px 0;
-    color: white;
-    font-size: 21px;
-    font-family: 'Lucida Grande', Helvetica, Arial, Sans-Serif;
+    background: #1f1f1f;
+    background-image: -webkit-linear-gradient(top, #1f1f1f, #737373);
+    background-image: -moz-linear-gradient(top, #1f1f1f, #737373);
+    background-image: -ms-linear-gradient(top, #1f1f1f, #737373);
+    background-image: -o-linear-gradient(top, #1f1f1f, #737373);
+    background-image: linear-gradient(to bottom, #1f1f1f, #737373);
+    -webkit-border-radius: 12;
+    -moz-border-radius: 12;
+    border-radius: 12px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    border: solid #dae0e3 1px;
     text-decoration: none;
-    vertical-align: middle;
-  }
+   }
 
-  .enter:hover {
-    border-top-color: #4a4a4a;
-    background: #4a4a4a;
-    color: #ccc;
-  }
+    .enter:hover {
+      background: #858585;
+      background-image: -webkit-linear-gradient(top, #858585, #969696);
+      background-image: -moz-linear-gradient(top, #858585, #969696);
+      background-image: -ms-linear-gradient(top, #858585, #969696);
+      background-image: -o-linear-gradient(top, #858585, #969696);
+      background-image: linear-gradient(to bottom, #858585, #969696);
+      text-decoration: none;
+    }
 
-  .enter:active {
-    border-top-color: #000000;
-    background: #000000;
-  }
+    .enter:focus {
+        border: 1px solid #09c;
+        box-shadow: 0 0 7px rgba(0, 200, 204, 0.7);
+        outline: none;
+    }
 
 .lives_container {
   width: 40%;
@@ -172,7 +204,7 @@ h1.the_title {
       opacity: 0.75;
       padding-left: 20px;
       font-family: Verdana;
-      font-size: 28px
+      font-size: 26px
     }
 
     .trash {
@@ -186,7 +218,7 @@ h1.the_title {
       opacity: 0.75;
       padding-left: 20px;
       font-family: Verdana;
-      font-size: 28px
+      font-size: 26px
     }
 
     .trash_whole_words {
