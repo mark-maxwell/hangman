@@ -16,6 +16,11 @@ describe "user makes a guess" do
     hangman.check_guess("animal")
   end
 
+  it "can treat lowercase/uppercase guesses as the same" do
+    expect(display).to receive(:valid_guess)
+    hangman.check_guess("N")
+  end
+
   it "can deduct a life for invalid whole word guess" do
     expect(display).to receive(:invalid_guess)
     hangman.check_guess("qico")
@@ -29,21 +34,28 @@ describe "user makes a guess" do
   it "can add an invalid guess to trash" do
     expect(display).to receive(:invalid_guess)
     hangman.check_guess("p")
-    expect(hangman.get_trashed_letters).to eq(["p"])
+    expect(hangman.get_trashed_letters).to eq("p")
   end
 
   it "can use trash to keep track of multiple invalid guesses" do
     expect(display).to receive(:invalid_guess).twice
     hangman.check_guess("q")
     hangman.check_guess("w")
-    expect(hangman.get_trashed_letters).to eq(["q", "w"])
+    expect(hangman.get_trashed_letters).to eq("q, w")
   end
 
   it "will not add duplicates to trash" do
     expect(display).to receive(:invalid_guess).twice
     hangman.check_guess("q")
     hangman.check_guess("q")
-    expect(hangman.get_trashed_letters).to eq(["q"])
+    expect(hangman.get_trashed_letters).to eq("q")
+  end
+
+  it "can keep track of correct guesses" do
+    expect(display).to receive(:valid_guess).twice
+    hangman.check_guess("a")
+    hangman.check_guess("n")
+    expect(hangman.correct_guesses).to eq(["a", "n"])
   end
 
   describe "lives can be checked and deducted" do

@@ -4,7 +4,7 @@ require_relative 'display'
 require_relative 'validate'
 
 class GameEngine
-  attr_accessor :answer, :shown_word, :character_count, :player, :display, :trash, :error_message
+  attr_accessor :answer, :shown_word, :character_count, :player, :display, :trash, :correct_guesses, :error_message
 
   def initialize(display, word)
 
@@ -14,13 +14,14 @@ class GameEngine
     @shown_word = []
     create_shown_word
     @trash = []
+    @correct_guesses = []
     @valid = Valid.new
     @error_message = "Howdy Partner, why not give us ya first guess!"
   end
 
   def validate_guess(guess)
     puts "here"
-    is_guess_valid = @valid.guess(guess, @trash)
+    is_guess_valid = @valid.guess(guess, @trash, @correct_guesses)
     if is_guess_valid[0]
       check_guess(guess)
       @error_message = ""
@@ -37,17 +38,18 @@ class GameEngine
   end
 
   def check_guess(guess)
-    matches = @answer.count(guess).to_i
+    matches = @answer.count(guess.downcase).to_i
     if matches > 0 && guess.length == 1 || guess == @answer
-      process_valid_guess(guess)
+      process_valid_guess(guess.downcase)
     else
-      process_invalid_guess(guess)
+      process_invalid_guess(guess.downcase)
     end
   end
 
   def process_valid_guess(guess)
     update_answer(guess)
     @display.valid_guess
+    add_to_correct_guesses(guess)
     word_complete if number_of_characters_left_to_guess == 0
   end
 
@@ -111,6 +113,10 @@ class GameEngine
       end
     }
     temp.join(", ")
+  end
+
+  def add_to_correct_guesses(guess)
+    @correct_guesses << guess
   end
 
   def update_answer(guess)
