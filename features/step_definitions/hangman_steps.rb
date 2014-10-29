@@ -25,7 +25,7 @@ Then(/^user is told guess is incorrect$/) do
 end
 
 Then(/^incorrect letter is added to trash$/) do
-  expect( hangman_game.get_trashed_letters). to eq(["q"])
+  expect( hangman_game.get_trashed_letters). to eq("q")
 end
 
 Then(/^a life is deducted$/) do

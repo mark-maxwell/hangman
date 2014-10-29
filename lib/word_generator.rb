@@ -4,7 +4,7 @@ class WordGenerator
   def generate_random_word
     line = []
     IO.foreach('/usr/share/dict/words') { |x|
-        if x.length < 8
+        if x.length < 6
           line << x
         end
       }

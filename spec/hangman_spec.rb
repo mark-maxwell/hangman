@@ -21,6 +21,19 @@ describe "user makes a guess" do
     hangman.check_guess("N")
   end
 
+  it "can handle a whole word guess of random casing" do
+    expect(display).to receive(:valid_guess)
+    expect(display).to receive(:game_won)
+    hangman.check_guess("aNiMAl")
+  end
+
+  it "can handle whole word guess when single guesses came before" do
+    expect(display).to receive(:valid_guess).twice
+    expect(display).to receive(:game_won)
+    hangman.check_guess("a")
+    hangman.check_guess("aNiMAl")
+  end
+
   it "can deduct a life for invalid whole word guess" do
     expect(display).to receive(:invalid_guess)
     hangman.check_guess("qico")

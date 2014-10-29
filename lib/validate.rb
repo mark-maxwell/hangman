@@ -5,7 +5,7 @@ class Valid
     elsif trash.include?(guess.downcase)
       return [false, "Too slow on the draw partner."]
     elsif correct_guesses.include?(guess.downcase)
-      return false, "C'mon now! You tried that... LOOK UP!!!"
+      return false, "C'mon now!!! You just tried that... LOOK UP!!!"
     else
       return [true, ""]
     end

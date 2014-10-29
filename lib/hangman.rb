@@ -39,7 +39,7 @@ class GameEngine
 
   def check_guess(guess)
     matches = @answer.count(guess.downcase).to_i
-    if matches > 0 && guess.length == 1 || guess == @answer
+    if matches > 0 && guess.length == 1 || guess.downcase == @answer
       process_valid_guess(guess.downcase)
     else
       process_invalid_guess(guess.downcase)
