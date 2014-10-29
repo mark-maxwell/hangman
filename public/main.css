@@ -15,7 +15,7 @@ body {
 }
 
 .container {
-  border: 2px solid;
+  border: 2px solid ;
   border-radius: 25px;
   box-shadow: 10px 10px 5px black;
   width: 92%;
@@ -24,6 +24,12 @@ body {
   background: rgba(255,255,255,0.5);
 
   padding: 20px 4%;
+}
+
+.text:focus {
+    border: 1px solid #09c;
+    box-shadow: 0 0 7px rgba(0, 200, 204, 0.7);
+    outline: none;
 }
 
 h1.the_title {
@@ -70,8 +76,15 @@ h1.the_title {
     font-size: 20px;
     width: 100%;
     border: 1px solid #000;
+    -webkit-transition: border 0.8s ease-in-out, box-shadow 0.8s ease-in-out;
     text-align: center;
   }
+
+  .input-guess:focus {
+    border: 1px solid #09c;
+    box-shadow: 0 0 7px rgba(255, 0, 0, 0.7);
+    outline: none;
+}
 
   .enter {
     border-top: 1px solid #8f8f8f;
@@ -151,29 +164,33 @@ h1.the_title {
   .trash_container {
     border-width: 0px 12px 0px 12px;
     border-style: double;
-    border-color: black;
+    border-color: rgba(0,0,0,0.75);;
     border-radius:40px 40px 60px 60px;
     -webkit-border-radius:40px 40px 60px 60px;
   }
     .trash_heading {
+      opacity: 0.75;
       padding-left: 20px;
       font-family: Verdana;
       font-size: 28px
     }
 
     .trash {
+      opacity: 0.75;
       padding-left: 55px;
       padding-bottom: 10px;
       font-size: 26px
     }
 
     .trash_whole_heading {
+      opacity: 0.75;
       padding-left: 20px;
       font-family: Verdana;
       font-size: 28px
     }
 
     .trash_whole_words {
+      opacity: 0.75;
       padding-left: 55px;
       font-size: 26px
     }
