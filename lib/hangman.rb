@@ -19,6 +19,7 @@ class GameEngine
   end
 
   def validate_guess(guess)
+    puts "here"
     is_guess_valid = @valid.guess(guess, @trash)
     if is_guess_valid[0]
       check_guess(guess)
@@ -97,9 +98,22 @@ class GameEngine
   end
 
   def update_answer(guess)
-    @shown_word.each {|index|
-      index.state = true if guess == index.letter
-    }
+
+    if guess.length > 1
+      whole_word_guess(guess)
+    else
+      @shown_word.each {|index|
+        index.state = true if guess == index.letter
+      }
+    end
+  end
+
+  def whole_word_guess(guess)
+    if guess == @answer
+      @shown_word.each {|index|
+        index.state = true
+      }
+    end
   end
 
   def word_complete

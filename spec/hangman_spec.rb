@@ -12,6 +12,14 @@ describe "user makes a guess" do
     hangman.check_guess(guess)
   end
 
+  it "can accept a full word as a guess" do
+    guess = "animal"
+
+    expect(display).to receive(:valid_guess)
+    expect(display).to receive(:game_won)
+    hangman.check_guess(guess)
+  end
+
   it "will handle an invalid guess" do
     guess = "b"
 
