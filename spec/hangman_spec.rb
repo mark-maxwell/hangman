@@ -6,25 +6,24 @@ describe "user makes a guess" do
   let(:hangman) { GameEngine.new(display, "animal") }
 
   it "can accept a valid guess" do
-    guess = "a"
-
     expect(display).to receive(:valid_guess)
-    hangman.check_guess(guess)
+    hangman.check_guess("a")
   end
 
   it "can accept a full word as a guess" do
-    guess = "animal"
-
     expect(display).to receive(:valid_guess)
     expect(display).to receive(:game_won)
-    hangman.check_guess(guess)
+    hangman.check_guess("animal")
+  end
+
+  it "can deduct a life for invalid whole word guess" do
+    expect(display).to receive(:invalid_guess)
+    hangman.check_guess("inco")
   end
 
   it "will handle an invalid guess" do
-    guess = "b"
-
     expect(display).to receive(:invalid_guess)
-    hangman.check_guess(guess)
+    hangman.check_guess("b")
   end
 
   it "can add an invalid guess to trash" do

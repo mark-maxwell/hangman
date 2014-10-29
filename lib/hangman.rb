@@ -113,6 +113,8 @@ class GameEngine
       @shown_word.each {|index|
         index.state = true
       }
+    else
+      process_invalid_guess(guess)
     end
   end
 
