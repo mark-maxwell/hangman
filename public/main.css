@@ -155,7 +155,6 @@ h1.the_title {
 .lives_container {
   width: 40%;
   float: left;
-  padding-top: 220px
 }
   .lives.current-9:before {
     content: "ed";
@@ -196,7 +195,7 @@ h1.the_title {
   .trash_container {
     border-width: 0px 12px 0px 12px;
     border-style: double;
-    border-color: rgba(0,0,0,0.75);;
+    border-color: rgba(0,0,0,0.75);
     border-radius:40px 40px 60px 60px;
     -webkit-border-radius:40px 40px 60px 60px;
   }
