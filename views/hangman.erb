@@ -15,15 +15,7 @@
         </div> 
       </div>
     </form>
-  </div>
-</div>
-
-<div class="lives_container">
-  <div class="hangman current-<%= lives%>">
-    <img src="../hangman_<%=lives%>.png">
-  </div>
-  <span class="lives current-<%= lives %>"></span>
-  <div class="trash_container">
+    <div class="trash_container">
     <div class="trash_heading">
       Guesses:
     </div>
@@ -37,6 +29,15 @@
       <%= trashed_words %>
     </div>
   </div>
+  </div>
+</div>
+
+<div class="lives_container">
+  <div class="hangman current-<%= lives%>">
+    <img class="show_image"src="../hangman_<%=lives%>.png">
+  </div>
+  <span class="lives current-<%= lives %>"></span>
+  
 </div>
 
 <div class="clearfix"></div>

@@ -192,6 +192,12 @@ h1.the_title {
     content: "a";
   }
 
+  .show_image {
+    width: 90%;
+    margin-left: 10%;
+    margin-bottom: 10px;
+  }
+
   .trash_container {
     border-width: 0px 12px 0px 12px;
     border-style: double;
@@ -231,6 +237,10 @@ h1.the_title {
       font-size: 50px;
       display: block;
       text-align: center;
+    }
+
+    .game-over-image {
+      width: 66%;
     }
 
 .clearfix {
