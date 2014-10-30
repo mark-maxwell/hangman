@@ -64,6 +64,41 @@ body {
         outline: none;
     }
 
+    .start_custom {
+      background: #1f1f1f;
+      background-image: -webkit-linear-gradient(top, #1f1f1f, #737373);
+      background-image: -moz-linear-gradient(top, #1f1f1f, #737373);
+      background-image: -ms-linear-gradient(top, #1f1f1f, #737373);
+      background-image: -o-linear-gradient(top, #1f1f1f, #737373);
+      background-image: linear-gradient(to bottom, #1f1f1f, #737373);
+      -webkit-border-radius: 12;
+      -moz-border-radius: 12;
+      border-radius: 12px;
+      font-family: Arial;
+      color: #ffffff;
+      font-size: 20px;
+      padding: 10px 20px 10px 20px;
+      border: solid #dae0e3 1px;
+      text-decoration: none;
+    }
+
+    .start_custom:hover {
+      background: #858585;
+      background-image: -webkit-linear-gradient(top, #858585, #969696);
+      background-image: -moz-linear-gradient(top, #858585, #969696);
+      background-image: -ms-linear-gradient(top, #858585, #969696);
+      background-image: -o-linear-gradient(top, #858585, #969696);
+      background-image: linear-gradient(to bottom, #858585, #969696);
+      text-decoration: none;
+    }
+
+
+    .start_custom:focus {
+        border: 1px solid #09c;
+        box-shadow: 0 0 7px rgba(0, 200, 204, 0.7);
+        outline: none;
+    }
+
 h1.the_title {
   padding: 0px;
   margin-top: 0px;
